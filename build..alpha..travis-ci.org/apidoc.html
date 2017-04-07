@@ -1,0 +1,2062 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/geddy/model"
+
+    >model (v6.0.1)</a>
+</h1>
+<h4>Datastore-agnostic ORM in JavaScript</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.model">module model</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.Migration">
+            function <span class="apidocSignatureSpan">model.</span>Migration
+            <span class="apidocSignatureSpan">(name, adapter)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.ModelBase">
+            function <span class="apidocSignatureSpan">model.</span>ModelBase
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.ModelDefinitionBase">
+            function <span class="apidocSignatureSpan">model.</span>ModelDefinitionBase
+            <span class="apidocSignatureSpan">(name)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.ModelDescription">
+            function <span class="apidocSignatureSpan">model.</span>ModelDescription
+            <span class="apidocSignatureSpan">(name)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.PropertyDescription">
+            function <span class="apidocSignatureSpan">model.</span>PropertyDescription
+            <span class="apidocSignatureSpan">(name, datatype, o)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.ValidationDescription">
+            function <span class="apidocSignatureSpan">model.</span>ValidationDescription
+            <span class="apidocSignatureSpan">(type, reference, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.clearDefinitions">
+            function <span class="apidocSignatureSpan">model.</span>clearDefinitions
+            <span class="apidocSignatureSpan">(defs)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.createAdapter">
+            function <span class="apidocSignatureSpan">model.</span>createAdapter
+            <span class="apidocSignatureSpan">(name, config)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.createForeignKeys">
+            function <span class="apidocSignatureSpan">model.</span>createForeignKeys
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.createItem">
+            function <span class="apidocSignatureSpan">model.</span>createItem
+            <span class="apidocSignatureSpan">(name, p, o)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.getAdapterForModel">
+            function <span class="apidocSignatureSpan">model.</span>getAdapterForModel
+            <span class="apidocSignatureSpan">(modelName)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.getAdapterInfo">
+            function <span class="apidocSignatureSpan">model.</span>getAdapterInfo
+            <span class="apidocSignatureSpan">(name)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.getAssociation">
+            function <span class="apidocSignatureSpan">model.</span>getAssociation
+            <span class="apidocSignatureSpan">(main, assn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.getAssociationType">
+            function <span class="apidocSignatureSpan">model.</span>getAssociationType
+            <span class="apidocSignatureSpan">(main, assn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.getModelByName">
+            function <span class="apidocSignatureSpan">model.</span>getModelByName
+            <span class="apidocSignatureSpan">(name)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.log">
+            function <span class="apidocSignatureSpan">model.</span>log
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.register">
+            function <span class="apidocSignatureSpan">model.</span>register
+            <span class="apidocSignatureSpan">(name, ModelDefinition)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.registerDefinition">
+            function <span class="apidocSignatureSpan">model.</span>registerDefinition
+            <span class="apidocSignatureSpan">(name, ModelDefinition)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.registerDefinitions">
+            function <span class="apidocSignatureSpan">model.</span>registerDefinitions
+            <span class="apidocSignatureSpan">(defs)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.setDefaultAdapter">
+            function <span class="apidocSignatureSpan">model.</span>setDefaultAdapter
+            <span class="apidocSignatureSpan">(name, config)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.setLocalRequireError">
+            function <span class="apidocSignatureSpan">model.</span>setLocalRequireError
+            <span class="apidocSignatureSpan">(msg)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.updateItem">
+            function <span class="apidocSignatureSpan">model.</span>updateItem
+            <span class="apidocSignatureSpan">(item, params, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.validateAndUpdateFromParams">
+            function <span class="apidocSignatureSpan">model.</span>validateAndUpdateFromParams
+            <span class="apidocSignatureSpan">(item, passedParams, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.validateProperty">
+            function <span class="apidocSignatureSpan">model.</span>validateProperty
+            <span class="apidocSignatureSpan">(prop, params, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">model.</span>Migration.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">model.</span>adapters</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">model.</span>config</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">model.</span>datatypes</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">model.</span>defaultAdapter</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">model.</span>descriptionRegistry</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">model.</span>formatters</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">model.</span>validators</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.model.Migration">module model.Migration</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.Migration.Migration">
+            function <span class="apidocSignatureSpan">model.</span>Migration
+            <span class="apidocSignatureSpan">(name, adapter)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.Migration.setDefaultAdapter">
+            function <span class="apidocSignatureSpan">model.Migration.</span>setDefaultAdapter
+            <span class="apidocSignatureSpan">(adapter)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.model.Migration.prototype">module model.Migration.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.Migration.prototype.addColumn">
+            function <span class="apidocSignatureSpan">model.Migration.prototype.</span>addColumn
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.Migration.prototype.addIndex">
+            function <span class="apidocSignatureSpan">model.Migration.prototype.</span>addIndex
+            <span class="apidocSignatureSpan">(table, column, options, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.Migration.prototype.changeColumn">
+            function <span class="apidocSignatureSpan">model.Migration.prototype.</span>changeColumn
+            <span class="apidocSignatureSpan">(table, column, datatype, options, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.Migration.prototype.createTable">
+            function <span class="apidocSignatureSpan">model.Migration.prototype.</span>createTable
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.Migration.prototype.down">
+            function <span class="apidocSignatureSpan">model.Migration.prototype.</span>down
+            <span class="apidocSignatureSpan">(next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.Migration.prototype.dropTable">
+            function <span class="apidocSignatureSpan">model.Migration.prototype.</span>dropTable
+            <span class="apidocSignatureSpan">(name, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.Migration.prototype.removeColumn">
+            function <span class="apidocSignatureSpan">model.Migration.prototype.</span>removeColumn
+            <span class="apidocSignatureSpan">(table, column, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.Migration.prototype.removeIndex">
+            function <span class="apidocSignatureSpan">model.Migration.prototype.</span>removeIndex
+            <span class="apidocSignatureSpan">(table, column, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.Migration.prototype.renameColumn">
+            function <span class="apidocSignatureSpan">model.Migration.prototype.</span>renameColumn
+            <span class="apidocSignatureSpan">(table, column, newColumn, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.Migration.prototype.up">
+            function <span class="apidocSignatureSpan">model.Migration.prototype.</span>up
+            <span class="apidocSignatureSpan">(next)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.model.ModelBase">module model.ModelBase</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.ModelBase.ModelBase">
+            function <span class="apidocSignatureSpan">model.</span>ModelBase
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.ModelBase.super_">
+            function <span class="apidocSignatureSpan">model.ModelBase.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.model.formatters">module model.formatters</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.formatters.date">
+            function <span class="apidocSignatureSpan">model.formatters.</span>date
+            <span class="apidocSignatureSpan">(val)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.formatters.time">
+            function <span class="apidocSignatureSpan">model.formatters.</span>time
+            <span class="apidocSignatureSpan">(val)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.model.validators">module model.validators</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.validators.absent">
+            function <span class="apidocSignatureSpan">model.validators.</span>absent
+            <span class="apidocSignatureSpan">(name, val, params, rule, locale)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.validators.confirmed">
+            function <span class="apidocSignatureSpan">model.validators.</span>confirmed
+            <span class="apidocSignatureSpan">(name, val, params, rule, locale)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.validators.format">
+            function <span class="apidocSignatureSpan">model.validators.</span>format
+            <span class="apidocSignatureSpan">(name, val, params, rule, locale)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.validators.length">
+            function <span class="apidocSignatureSpan">model.validators.</span>length
+            <span class="apidocSignatureSpan">(name, val, params, rule, locale)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.validators.present">
+            function <span class="apidocSignatureSpan">model.validators.</span>present
+            <span class="apidocSignatureSpan">(name, val, params, rule, locale)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.model.validators.withFunction">
+            function <span class="apidocSignatureSpan">model.validators.</span>withFunction
+            <span class="apidocSignatureSpan">(name, val, params, rule, locale)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.model" id="apidoc.module.model">module model</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.model.Migration" id="apidoc.element.model.Migration">
+        function <span class="apidocSignatureSpan">model.</span>Migration
+        <span class="apidocSignatureSpan">(name, adapter)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Migration = function (name, adapter) {
+  this.name = name;
+  this.adapter = adapter || defaultAdapter;
+  this.generator = this.adapter.generator;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.ModelBase" id="apidoc.element.model.ModelBase">
+        function <span class="apidocSignatureSpan">model.</span>ModelBase
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ModelBase = function () {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.ModelDefinitionBase" id="apidoc.element.model.ModelDefinitionBase">
+        function <span class="apidocSignatureSpan">model.</span>ModelDefinitionBase
+        <span class="apidocSignatureSpan">(name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ModelDefinitionBase = function (name) {
+  var self = this
+    , reg = model.descriptionRegistry
+    , _createValidator = function (p) {
+        return function () {
+          var args = Array.prototype.slice.call(arguments);
+          args.unshift(p);
+          return self.validates.apply(self, args);
+        };
+      };
+
+  this.name = name;
+
+  this.setAdapter = function (name, config) {
+    var adapter = adapters.create(name, config);
+    this.adapter = adapter;
+  };
+
+  this.property = function (name, datatype, options) {
+    var opts = options || {};
+
+    // Don&#x27;t allow users to define properties with the same
+    // name as magical system properties
+    if (!opts.isSystem &#x26;&#x26; _systemProperties[name]) {
+      throw new Error(&#x27;You cannot define the property &#x22;&#x27; + name +
+          &#x27;&#x22; on a model, as it\&#x27;s a reserved system-property name.&#x27;);
+    }
+
+    reg[this.name].properties[name] =
+      new model.PropertyDescription(name, datatype, opts);
+  };
+
+  this.defineProperties = function (obj) {
+    var type
+      , options
+      , property;
+
+    for (var name in obj) {
+      property = obj[name];
+
+      if (typeof property === &#x27;string&#x27;) {
+        type = property;
+        options = {};
+      }
+      else {
+        type = property.type;
+        options = property;
+      }
+
+      this.property(name, type, options);
+    }
+  }
+
+  // (condition, name, [reference], [opts])
+  this.validates = function () {
+    var args = Array.prototype.slice.call(arguments)
+      , arg
+      , condition = args.shift()
+      , name = args.shift()
+      , reference
+      , opts = {};
+    while ((arg = args.pop())) {
+      // Regex for validatesFormat or function for validatesWithFunction
+      // or string param name for validatesConfirmed
+      if (arg instanceof RegExp || typeof arg == &#x27;function&#x27; ||
+          typeof arg == &#x27;string&#x27;) {
+        reference = arg;
+      }
+      else {
+        opts = utils.mixin(opts, arg);
+      }
+    }
+
+    // Old API allows passing simple number to validatesLength
+    if (!isNaN(opts)) {
+      opts = {is: opts};
+    }
+
+    // Default to &#x27;create&#x27; and &#x27;update&#x27; only for scenarios
+    opts.on = opts.on || [&#x27;create&#x27;, &#x27;update&#x27;];
+
+    if (typeof reg[this.name].properties[name] === &#x27;undefined&#x27;) {
+      throw new Error(&#x27;Validation cannot be added for &#x22;&#x27; + name +
+                      &#x27;&#x22;: property does not exist on the &#x27; + this.name +
+                      &#x27; model.&#x27;);
+    }
+
+    reg[this.name].properties[name].validations[condition] =
+        new model.ValidationDescription(condition, reference, opts);
+  };
+
+  // For each of the validators, create a validatesFooBar from
+  // validates(&#x27;fooBar&#x27; ...
+  for (var p in model.validators) {
+    this[&#x27;validates&#x27; + utils.string.capitalize(p)] = _createValidator(p);
+  }
+
+  // Add the base model properties -- these should not be handled by user input
+  if (model.config.useTimestamps) {
+    this.property(&#x27;createdAt&#x27;, &#x27;datetime&#x27;, {isSystem: true});
+    this.property(&#x27;updatedAt&#x27;, &#x27;datetime&#x27;, {isSystem: true});
+  }
+
+  [&#x27;hasMany&#x27;, &#x27;hasOne&#x27;, &#x27;belongsTo&#x27;].forEach(function (assnKey) {
+    self[assnKey] = function (name, options) {
+      var opts = options || {}
+        , assn = reg[self.name].associations[assnKey] || {}
+        , assnName = name
+        , modelName = opts.model || name;
+
+      // Normalize inflection; we don&#x27;t care which they use
+      assnName = utils.string.getInflection(assnName, &#x27;constructor&#x27;, &#x27;singular&#x27;);
+      modelName = utils.string.getInflection(modelName, &#x27;constructor&#x27;, &#x27;singular&#x27;);
+
+      assn[assnName] = {
+        name: assnName
+      , model: modelName
+      , through: opts.through
+      , type: assnKey
+      };
+
+      reg[self.name].associations[assnKey] = assn;
+
+      // Set up foreign keys
+      var createForeignKey = function (assnName) {
+        return function () {
+          var ownerModelName
+            , ownedModelName
+            , idKey
+            , datatype
+            , def;
+
+          if (assnKey == &#x27;belongsTo&#x27;) {
+            ownerModelName = modelName;
+            ownedModelName = self.name;
+            idKey = modelName;
+          }
+          else {
+            ownerModelName ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.ModelDescription" id="apidoc.element.model.ModelDescription">
+        function <span class="apidocSignatureSpan">model.</span>ModelDescription
+        <span class="apidocSignatureSpan">(name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ModelDescription = function (name) {
+  this.name = name;
+  this.properties = {};
+  this.associations = {};
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.PropertyDescription" id="apidoc.element.model.PropertyDescription">
+        function <span class="apidocSignatureSpan">model.</span>PropertyDescription
+        <span class="apidocSignatureSpan">(name, datatype, o)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">PropertyDescription = function (name, datatype, o) {
+  var opts = o || {}
+    , validations = {}
+    , validationOpts = utils.mixin({}, opts);
+
+  delete validationOpts.required;
+  delete validationOpts.length;
+  delete validationOpts.format;
+
+  this.name = name;
+  this.datatype = datatype;
+  this.options = opts;
+
+  // Creates results similar to `this.validates`, above in ModelDefinitionBase
+  // Would be great to remove the duplication of logic
+  for (var p in opts) {
+    if (opts.required || opts.length) {
+      validations.present =
+          new model.ValidationDescription(&#x27;present&#x27;, null, validationOpts);
+    }
+    if (opts.length) {
+      if (typeof opts.length == &#x27;object&#x27;) {
+      // {min: 1, max: 2} or {is: 3}
+      validations.length =
+          new model.ValidationDescription(&#x27;length&#x27;, null,
+              utils.mixin(opts.length, validationOpts));
+      }
+      // 1 or &#x27;1&#x27;
+      else {
+      validations.length =
+          new model.ValidationDescription(&#x27;length&#x27;, null,
+              utils.mixin({is: opts.length}, validationOpts));
+      }
+    }
+    if (opts.format) {
+      validations.format =
+          new model.ValidationDescription(&#x27;length&#x27;, opts.format,
+              validationOpts);
+    }
+  }
+  this.validations = validations;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.ValidationDescription" id="apidoc.element.model.ValidationDescription">
+        function <span class="apidocSignatureSpan">model.</span>ValidationDescription
+        <span class="apidocSignatureSpan">(type, reference, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ValidationDescription = function (type, reference, opts) {
+  this.type = type;
+  this.reference = reference;
+  this.opts = opts || {};
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.clearDefinitions" id="apidoc.element.model.clearDefinitions">
+        function <span class="apidocSignatureSpan">model.</span>clearDefinitions
+        <span class="apidocSignatureSpan">(defs)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">clearDefinitions = function (defs) {
+  var self = this;
+  defs.forEach(function (m) {
+    // Prefer &#x27;name&#x27;, accept older &#x27;ctorName&#x27;
+    var name = m.name || m.ctorName;
+    // Registration may have happened in the model definition file
+    // if using the old templates. Don&#x27;t re-register
+    delete self[name];
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.createAdapter" id="apidoc.element.model.createAdapter">
+        function <span class="apidocSignatureSpan">model.</span>createAdapter
+        <span class="apidocSignatureSpan">(name, config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createAdapter = function (name, config) {
+  return adapters.create(name, config);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+- SQLite: `npm install sqlite3 --save`
+- MongoDB: `npm install mongodb --save`
+- LevelDB: `npm install level --save`
+
+The in-memory, filesystem, and Riak adapters work out of the box and don&#x27;t need any
+additional libraries.
+
+#### model.<span class="apidocCodeKeywordSpan">createAdapter</span>(_name_, _config_)
+
+Use `model.createAdapter(name, config)` to initialize an adapter and connect to the database.
+
+_NOTE:_ The `config` parameter for each adapter depends on the module used. As an example,
+postgres uses `database` for the database name whereas MongoDB uses `dbName`. Model doesn&#x27;t
+try to standardize the config for each adapter. Instead it just passes the config you give it
+in `createAdapter` to the NPM module. To check the config setup for your adapter go to the
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.createForeignKeys" id="apidoc.element.model.createForeignKeys">
+        function <span class="apidocSignatureSpan">model.</span>createForeignKeys
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createForeignKeys = function () {
+  var creator;
+  while((creator = _foreignKeyCreators.pop())) {
+    creator();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.createItem" id="apidoc.element.model.createItem">
+        function <span class="apidocSignatureSpan">model.</span>createItem
+        <span class="apidocSignatureSpan">(name, p, o)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createItem = function (name, p, o) {
+  var params = p || {}
+    , opts = o || {}
+    , item = new model[name](params);
+
+  // Default to the &#x27;create&#x27; scenario
+  opts.scenario = opts.scenario || &#x27;create&#x27;
+
+  model[name].emit(&#x27;beforeCreate&#x27;, p, o);
+
+  this.validateAndUpdateFromParams(item, params, opts);
+
+  if (this.config.useTimestamps &#x26;&#x26; !item.createdAt) {
+    item.createdAt = new Date();
+  }
+
+  if (typeof item.afterCreate === &#x27;function&#x27;) {
+    item.afterCreate();
+  }
+  model[name].emit(&#x27;create&#x27;, item);
+  return item;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.getAdapterForModel" id="apidoc.element.model.getAdapterForModel">
+        function <span class="apidocSignatureSpan">model.</span>getAdapterForModel
+        <span class="apidocSignatureSpan">(modelName)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getAdapterForModel = function (modelName) {
+  var ctor = this[modelName]
+    , adapter = (ctor &#x26;&#x26; ctor.adapter) || this.defaultAdapter;
+  if (!adapter) {
+    throw new Error(&#x27;No adapter found for &#x27; + modelName +
+        &#x27;. Please define one with `setAdapter`, or define a default&#x27; +
+        &#x27; adapter with `model.setDefaultAdapter`.&#x27;);
+  }
+  return adapter;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.getAdapterInfo" id="apidoc.element.model.getAdapterInfo">
+        function <span class="apidocSignatureSpan">model.</span>getAdapterInfo
+        <span class="apidocSignatureSpan">(name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getAdapterInfo = function (name) {
+  return adapters.getAdapterInfo(name);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.getAssociation" id="apidoc.element.model.getAssociation">
+        function <span class="apidocSignatureSpan">model.</span>getAssociation
+        <span class="apidocSignatureSpan">(main, assn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getAssociation = function (main, assn) {
+  var mainName = utils.string.getInflection(main, &#x27;constructor&#x27;, &#x27;singular&#x27;)
+    , assnName = utils.string.getInflection(assn, &#x27;constructor&#x27;, &#x27;singular&#x27;)
+    , assn
+    , assnItem;
+  assn = this.descriptionRegistry[mainName].associations;
+  for (var p in assn) {
+    assnItem = assn[p][assnName];
+    if (assnItem) {
+      return assnItem;
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.getAssociationType" id="apidoc.element.model.getAssociationType">
+        function <span class="apidocSignatureSpan">model.</span>getAssociationType
+        <span class="apidocSignatureSpan">(main, assn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getAssociationType = function (main, assn) {
+  var mainName = utils.string.getInflection(main, &#x27;constructor&#x27;, &#x27;singular&#x27;)
+    , assnName = utils.string.getInflection(assn, &#x27;constructor&#x27;, &#x27;singular&#x27;)
+    , assn
+    , assnItem;
+  assn = this.descriptionRegistry[mainName].associations;
+  for (var p in assn) {
+    assnItem = assn[p][assnName];
+    if (assnItem) {
+      return p;
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.getModelByName" id="apidoc.element.model.getModelByName">
+        function <span class="apidocSignatureSpan">model.</span>getModelByName
+        <span class="apidocSignatureSpan">(name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getModelByName = function (name) {
+  return this[name];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.log" id="apidoc.element.model.log">
+        function <span class="apidocSignatureSpan">model.</span>log
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">log = function () {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // Update the model&#x27;s name property
+  model.name = &#x22;New name!&#x22;;
+
+  // Once we&#x27;re done updating properties we can call save on the model.
+  // Save will send the current model data to the DB you specified
+  model.save(function (err, updatedModel) {
+    if (err) throw new Error(&#x27;Could not save the model&#x27;);
+    console.<span class="apidocCodeKeywordSpan">log</span>(&#x22;The model was updated!&#x22;);
+  });
+});
+
+```
+
+## Defining models
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.register" id="apidoc.element.model.register">
+        function <span class="apidocSignatureSpan">model.</span>register
+        <span class="apidocSignatureSpan">(name, ModelDefinition)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">register = function (name, ModelDefinition) {
+  return this.registerDefinition(name, ModelDefinition);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    enabled: { type: &#x27;boolean&#x27; },
+    archived: { type: &#x27;boolean&#x27; },
+  });
+};
+
+// This registers the model with the model package so
+// things like associations can work
+Foo = model.<span class="apidocCodeKeywordSpan">register</span>(&#x27;Foo&#x27;, Foo);
+
+// Now we export Foo to create a reusable model module
+module.exports = Foo;
+```
+
+You can then use it like the following example:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.registerDefinition" id="apidoc.element.model.registerDefinition">
+        function <span class="apidocSignatureSpan">model.</span>registerDefinition
+        <span class="apidocSignatureSpan">(name, ModelDefinition)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">registerDefinition = function (name, ModelDefinition) {
+  var origProto = ModelDefinition.prototype
+    , defined
+    , ModelCtor;
+
+  // Create the place to store the metadata about the model structure
+  // to use to do validations, etc. when constructing
+  model.descriptionRegistry[name] = new model.ModelDescription(name);
+  // Execute all the definition methods to create that metadata
+  ModelDefinition.prototype = new model.ModelDefinitionBase(name);
+  defined = new ModelDefinition();
+
+  // Create the constructor function to use when calling static
+  // ModelCtor.create. Gives them the proper instanceof value,
+  // and .valid, etc. instance-methods.
+  ModelCtor = _createModelItemConstructor(defined);
+
+  // Mix in the static methods like .create and .load
+  utils.mixin(ModelCtor, _createStaticMethodsMixin(name));
+  // Mix on the statics on the definition &#x27;ctor&#x27; onto the
+  // instantiated ModelDefinition instance
+  utils.mixin(defined, ModelDefinition);
+  // Mix ModelDefinition instance properties as static properties
+  // for the model item &#x27;ctor&#x27;
+  utils.mixin(ModelCtor, defined);
+  // Same with EventEmitter methods
+  utils.enhance(ModelCtor, new EventEmitter());
+
+  // Mix any functions defined directly in the model-item definition
+  // &#x27;constructor&#x27; into the original prototype, and set it as the prototype of the
+  // actual constructor
+  utils.mixin(origProto, defined);
+
+  ModelCtor.prototype = new model.ModelBase();
+  // Preserve any inherited shit from the definition proto
+  utils.enhance(ModelCtor.prototype, origProto);
+
+  model[name] = ModelCtor;
+
+  return ModelCtor;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.registerDefinitions" id="apidoc.element.model.registerDefinitions">
+        function <span class="apidocSignatureSpan">model.</span>registerDefinitions
+        <span class="apidocSignatureSpan">(defs)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">registerDefinitions = function (defs) {
+  var self = this;
+  defs.forEach(function (m) {
+    // Prefer &#x27;name&#x27;, accept older &#x27;ctorName&#x27;
+    var name = m.name || m.ctorName;
+    // Registration may have happened in the model definition file
+    // if using the old templates. Don&#x27;t re-register
+    if (!self[name]) {
+      self.registerDefinition(name, m.ctor);
+    }
+  });
+  this.createForeignKeys();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.setDefaultAdapter" id="apidoc.element.model.setDefaultAdapter">
+        function <span class="apidocSignatureSpan">model.</span>setDefaultAdapter
+        <span class="apidocSignatureSpan">(name, config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setDefaultAdapter = function (name, config) {
+  var adapter = adapters.create(name, config);
+  this.defaultAdapter = adapter;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.setLocalRequireError" id="apidoc.element.model.setLocalRequireError">
+        function <span class="apidocSignatureSpan">model.</span>setLocalRequireError
+        <span class="apidocSignatureSpan">(msg)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setLocalRequireError = function (msg) {
+  this.localRequireError = msg;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.updateItem" id="apidoc.element.model.updateItem">
+        function <span class="apidocSignatureSpan">model.</span>updateItem
+        <span class="apidocSignatureSpan">(item, params, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">updateItem = function (item, params, opts) {
+  var data = {}
+    , name = item.type
+    , opts = opts || {};
+
+  // Default to the &#x27;update&#x27; scenario
+  opts.scenario = opts.scenario || &#x27;update&#x27;
+
+  model[name].emit(&#x27;beforeUpdateProperties&#x27;, item, params, opts);
+  item.emit(&#x27;beforeUpdateProperties&#x27;);
+
+  utils.mixin(data, item);
+  utils.mixin(data, params);
+  this.validateAndUpdateFromParams(item, data, opts);
+
+  if (typeof item.afterUpdateProperties === &#x27;function&#x27;) {
+    item.afterUpdateProperties();
+  }
+
+  model[name].emit(&#x27;updateProperties&#x27;, item);
+  item.emit(&#x27;updateProperties&#x27;);
+
+  return item;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.validateAndUpdateFromParams" id="apidoc.element.model.validateAndUpdateFromParams">
+        function <span class="apidocSignatureSpan">model.</span>validateAndUpdateFromParams
+        <span class="apidocSignatureSpan">(item, passedParams, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">validateAndUpdateFromParams = function (item, passedParams, opts) {
+  var params
+    , name = item.type
+    , type = model.descriptionRegistry[name]
+    , properties = type.properties
+    , validated = null
+    , errs = null
+    , camelizedKey
+    , skip = opts.skip
+    , scenario = opts.scenario
+    , skipKeys = {}
+    , val;
+
+  if (typeof item.beforeValidate === &#x27;function&#x27;) {
+    item.beforeValidate(passedParams);
+  }
+  item.emit(&#x27;beforeValidate&#x27;)
+  model[name].emit(&#x27;beforeValidate&#x27;, item, passedParams);
+
+  // May be revalidating, clear errors
+  delete item.errors;
+
+  // Convert snake_case names in params to camelCase
+  if (this.config.forceCamel) {
+    params = {};
+    for (var p in passedParams) {
+      // Allow leading underscores in the keys for pseudo-privates
+      camelizedKey = utils.string.camelize(p, {leadingUnderscore: true});
+      params[camelizedKey] = passedParams[p];
+    }
+  }
+  else {
+    params = passedParams;
+  }
+
+  // User-input should never contain these -- but we still want
+  // to validate them to make sure the format didn&#x27;t get fucked up
+  if (typeof item.createdAt != &#x27;undefined&#x27;) {
+    params.createdAt = item.createdAt;
+  }
+  if (typeof item.updatedAt != &#x27;undefined&#x27;) {
+    params.updatedAt = item.updatedAt;
+  }
+
+  if (skip) {
+    for (var i in skip) {
+      skipKeys[skip[i]] = true;
+    }
+  }
+
+  for (var p in properties) {
+    if (skipKeys[p]) {
+      continue;
+    }
+
+    validated = this.validateProperty(properties[p], params, {scenario: scenario});
+    // If there are any failed validations, the errs param
+    // contains an Object literal keyed by field name, and the
+    // error message for the first failed validation for that
+    // property
+    // Use raw, invalid value on the instance
+    if (validated.err) {
+      errs = errs || {};
+      errs[p] = validated.err;
+      item[p] = params[p];
+    }
+    // Otherwise add the type-coerced, valid value to the return item
+    else {
+      item[p] = validated.val;
+    }
+  }
+
+  // Should never have been incuded in user input, so safe to
+  // rm these from the params
+  delete params.createdAt;
+  delete params.updatedAt;
+
+  if (errs) {
+    item.errors = errs;
+  }
+
+  if (typeof item.afterValidate === &#x27;function&#x27;) {
+    item.afterValidate();
+  }
+
+  item.emit(&#x27;validate&#x27;)
+  model[name].emit(&#x27;validate&#x27;, item);
+
+  return item;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.validateProperty" id="apidoc.element.model.validateProperty">
+        function <span class="apidocSignatureSpan">model.</span>validateProperty
+        <span class="apidocSignatureSpan">(prop, params, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">validateProperty = function (prop, params, opts) {
+
+  var options = opts || {}
+    , name = prop.name
+    , val = params[name]
+    , datatypeName = prop.datatype.toLowerCase()
+    , datatypeValidator = this.datatypes[datatypeName].validate
+    , result
+    , scenario = opts.scenario
+    , locale = options.locale || utils.i18n.getDefaultLocale();
+
+  // Validate for the base datatype only if there actually is a value --
+  // e.g., undefined will fail the validation for Number, even if the
+  // field is optional
+  if (!utils.isEmpty(val)) {
+    // &#x27;Any&#x27; datatype
+    if (prop.datatype == &#x27;*&#x27;) {
+      result = {
+        val: val
+      };
+    }
+    // Specific datatype -- perform validation/type-coercion
+    else {
+      result = datatypeValidator(name, val, locale);
+      if (result.err) {
+        return {
+          err: result.err,
+          val: null
+        };
+      }
+    }
+    // Value may have been modified in the datatype check -- e.g.,
+    // &#x27;false&#x27; changed to false, &#x27;8.0&#x27; changed to 8, &#x27;2112&#x27; changed to
+    // 2112, etc.
+    val = result.val;
+  }
+
+  // Now go through all the base validations for this property
+  var validations = prop.validations
+    , validator
+    , err
+    , rule;
+
+  for (var p in validations) {
+    validator = model.validators[p]
+    rule = utils.mixin({}, validations[p], {scenario: opts.scenario});
+
+    if (typeof validator != &#x27;function&#x27;) {
+      throw new Error(p + &#x27; is not a valid validator&#x27;);
+    }
+
+    err = validator(name, val, params, rule, locale);
+    // If there&#x27;s an error for a validation, don&#x27;t bother
+    // trying to continue with more validations -- just return
+    // this first error message
+    if (err) {
+      return {
+        err: err,
+        val: null
+      };
+    }
+  }
+
+  // If there weren&#x27;t any errors, return the value for this property
+  // and no error
+  return {
+    err: null,
+    val: val
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.model.Migration" id="apidoc.module.model.Migration">module model.Migration</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.model.Migration.Migration" id="apidoc.element.model.Migration.Migration">
+        function <span class="apidocSignatureSpan">model.</span>Migration
+        <span class="apidocSignatureSpan">(name, adapter)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Migration = function (name, adapter) {
+  this.name = name;
+  this.adapter = adapter || defaultAdapter;
+  this.generator = this.adapter.generator;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.Migration.setDefaultAdapter" id="apidoc.element.model.Migration.setDefaultAdapter">
+        function <span class="apidocSignatureSpan">model.Migration.</span>setDefaultAdapter
+        <span class="apidocSignatureSpan">(adapter)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setDefaultAdapter = function (adapter) {
+  defaultAdapter = adapter;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.model.Migration.prototype" id="apidoc.module.model.Migration.prototype">module model.Migration.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.model.Migration.prototype.addColumn" id="apidoc.element.model.Migration.prototype.addColumn">
+        function <span class="apidocSignatureSpan">model.Migration.prototype.</span>addColumn
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addColumn = function () {
+  var args = Array.prototype.slice.call(arguments)
+    , sql = &#x27;&#x27;
+    , table = args.shift()
+    , column = args.shift()
+    , datatype = args.shift()
+    , cb = args.pop()
+    , opts = args.pop() || {} // Optional
+
+  sql = this.generator.alterTableStatement(table, {
+    operation: &#x27;add&#x27;
+  , property: {
+      name: column
+    , datatype: datatype
+    }
+  });
+  this.adapter.exec(sql, cb);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.Migration.prototype.addIndex" id="apidoc.element.model.Migration.prototype.addIndex">
+        function <span class="apidocSignatureSpan">model.Migration.prototype.</span>addIndex
+        <span class="apidocSignatureSpan">(table, column, options, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addIndex = function (table, column, options, cb) {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.Migration.prototype.changeColumn" id="apidoc.element.model.Migration.prototype.changeColumn">
+        function <span class="apidocSignatureSpan">model.Migration.prototype.</span>changeColumn
+        <span class="apidocSignatureSpan">(table, column, datatype, options, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">changeColumn = function (table, column, datatype, options, cb) {
+  var args = Array.prototype.slice.call(arguments)
+    , sql = &#x27;&#x27;
+    , table = args.shift()
+    , column = args.shift()
+    , datatype = args.shift()
+    , cb = args.pop()
+    , opts = args.pop() || {} // Optional
+
+  sql = this.generator.alterTableStatement(table, {
+    operation: &#x27;alter&#x27;
+  , property: {
+      name: column
+    , datatype: datatype
+    }
+  });
+  this.adapter.exec(sql, cb);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.Migration.prototype.createTable" id="apidoc.element.model.Migration.prototype.createTable">
+        function <span class="apidocSignatureSpan">model.Migration.prototype.</span>createTable
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createTable = function () {
+  // FIXME: Shouldn&#x27;t have to late-require &#x27;model&#x27; here
+  // Why is order of loading a problem here?
+  var model = require(&#x27;../index&#x27;)
+    , args = Array.prototype.slice.call(arguments)
+    , arg
+    , sql = &#x27;&#x27;
+    , name = args.shift()
+    , opts = {}
+    , definition = function () {}
+    , cb = args.pop()
+    , col = new Columnator();
+
+  // Optional opts/callback or callback/opts
+  while ((arg = args.pop())) {
+    if (typeof arg == &#x27;function&#x27;) {
+      definition = arg;
+    }
+    else {
+      opts = arg;
+    }
+  }
+
+  definition(col);
+
+  if (model.config.useTimestamps) {
+    col.cols.createdAt = {
+      name: &#x27;createdAt&#x27;
+    , datatype: &#x27;datetime&#x27;
+    };
+    col.cols.updatedAt = {
+      name: &#x27;updatedAt&#x27;
+    , datatype: &#x27;datetime&#x27;
+    };
+  }
+
+  sql = this.generator.createTableStatement(name, col.cols);
+  this.adapter.exec(sql, cb);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.Migration.prototype.down" id="apidoc.element.model.Migration.prototype.down">
+        function <span class="apidocSignatureSpan">model.Migration.prototype.</span>down
+        <span class="apidocSignatureSpan">(next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">down = function (next) {
+  next();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.Migration.prototype.dropTable" id="apidoc.element.model.Migration.prototype.dropTable">
+        function <span class="apidocSignatureSpan">model.Migration.prototype.</span>dropTable
+        <span class="apidocSignatureSpan">(name, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">dropTable = function (name, cb) {
+  var sql = this.generator.dropTableStatement(name);
+  this.adapter.exec(sql, cb);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.Migration.prototype.removeColumn" id="apidoc.element.model.Migration.prototype.removeColumn">
+        function <span class="apidocSignatureSpan">model.Migration.prototype.</span>removeColumn
+        <span class="apidocSignatureSpan">(table, column, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">removeColumn = function (table, column, cb) {
+  var sql = this.generator.alterTableStatement(table, {
+    operation: &#x27;drop&#x27;
+  , property: {
+      name: column
+    }
+  });
+  this.adapter.exec(sql, cb);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.Migration.prototype.removeIndex" id="apidoc.element.model.Migration.prototype.removeIndex">
+        function <span class="apidocSignatureSpan">model.Migration.prototype.</span>removeIndex
+        <span class="apidocSignatureSpan">(table, column, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">removeIndex = function (table, column, cb) {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.Migration.prototype.renameColumn" id="apidoc.element.model.Migration.prototype.renameColumn">
+        function <span class="apidocSignatureSpan">model.Migration.prototype.</span>renameColumn
+        <span class="apidocSignatureSpan">(table, column, newColumn, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">renameColumn = function (table, column, newColumn, cb) {
+  var sql = this.generator.alterTableStatement(table, {
+    operation: &#x27;rename&#x27;
+  , property: {
+      name: column
+    , newName: newColumn
+    }
+  });
+  this.adapter.exec(sql, cb);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.Migration.prototype.up" id="apidoc.element.model.Migration.prototype.up">
+        function <span class="apidocSignatureSpan">model.Migration.prototype.</span>up
+        <span class="apidocSignatureSpan">(next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">up = function (next) {
+  next();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.model.ModelBase" id="apidoc.module.model.ModelBase">module model.ModelBase</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.model.ModelBase.ModelBase" id="apidoc.element.model.ModelBase.ModelBase">
+        function <span class="apidocSignatureSpan">model.</span>ModelBase
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ModelBase = function () {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.ModelBase.super_" id="apidoc.element.model.ModelBase.super_">
+        function <span class="apidocSignatureSpan">model.ModelBase.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
+  EventEmitter.init.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.model.formatters" id="apidoc.module.model.formatters">module model.formatters</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.model.formatters.date" id="apidoc.element.model.formatters.date">
+        function <span class="apidocSignatureSpan">model.formatters.</span>date
+        <span class="apidocSignatureSpan">(val)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">date = function (val) {
+  return geddy.date.strftime(val, geddy.config.dateFormat);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.formatters.time" id="apidoc.element.model.formatters.time">
+        function <span class="apidocSignatureSpan">model.formatters.</span>time
+        <span class="apidocSignatureSpan">(val)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">time = function (val) {
+  return geddy.date.strftime(val, geddy.config.timeFormat);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.model.validators" id="apidoc.module.model.validators">module model.validators</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.model.validators.absent" id="apidoc.element.model.validators.absent">
+        function <span class="apidocSignatureSpan">model.validators.</span>absent
+        <span class="apidocSignatureSpan">(name, val, params, rule, locale)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">absent = function (name, val, params, rule, locale) {
+  var validScenarios = rule.opts &#x26;&#x26; rule.opts.on
+    , scenario = rule.scenario
+    , shouldValidate = false;
+
+  // By default, we should validate on all scenarios
+  if (!validScenarios) {
+    shouldValidate = true;
+  }
+
+  // If the user specified scenarios
+  if (!shouldValidate) {
+    // Accept strings too
+    if (! validScenarios instanceof Array) {
+      validScenarios = [validScenarios];
+    }
+
+    // Normalize the input
+    for(var i=0, ii=validScenarios.length; i &#x3c; ii; i++) {
+      validScenarios[i] = validScenarios[i].toLowerCase();
+    }
+
+    // Scenario might be undefined here, but don&#x27;t hide the error as
+    // we should always validate with a scenario in mind lest something
+    // unexpected happen.
+    shouldValidate = validScenarios.indexOf(scenario.toLowerCase()) &#x3e;= 0;
+  }
+
+  if (shouldValidate) {
+    return baseValidator(name, val, params, rule, locale);
+  }
+  else {
+    return null;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.validators.confirmed" id="apidoc.element.model.validators.confirmed">
+        function <span class="apidocSignatureSpan">model.validators.</span>confirmed
+        <span class="apidocSignatureSpan">(name, val, params, rule, locale)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">confirmed = function (name, val, params, rule, locale) {
+  var validScenarios = rule.opts &#x26;&#x26; rule.opts.on
+    , scenario = rule.scenario
+    , shouldValidate = false;
+
+  // By default, we should validate on all scenarios
+  if (!validScenarios) {
+    shouldValidate = true;
+  }
+
+  // If the user specified scenarios
+  if (!shouldValidate) {
+    // Accept strings too
+    if (! validScenarios instanceof Array) {
+      validScenarios = [validScenarios];
+    }
+
+    // Normalize the input
+    for(var i=0, ii=validScenarios.length; i &#x3c; ii; i++) {
+      validScenarios[i] = validScenarios[i].toLowerCase();
+    }
+
+    // Scenario might be undefined here, but don&#x27;t hide the error as
+    // we should always validate with a scenario in mind lest something
+    // unexpected happen.
+    shouldValidate = validScenarios.indexOf(scenario.toLowerCase()) &#x3e;= 0;
+  }
+
+  if (shouldValidate) {
+    return baseValidator(name, val, params, rule, locale);
+  }
+  else {
+    return null;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.validators.format" id="apidoc.element.model.validators.format">
+        function <span class="apidocSignatureSpan">model.validators.</span>format
+        <span class="apidocSignatureSpan">(name, val, params, rule, locale)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">format = function (name, val, params, rule, locale) {
+  var validScenarios = rule.opts &#x26;&#x26; rule.opts.on
+    , scenario = rule.scenario
+    , shouldValidate = false;
+
+  // By default, we should validate on all scenarios
+  if (!validScenarios) {
+    shouldValidate = true;
+  }
+
+  // If the user specified scenarios
+  if (!shouldValidate) {
+    // Accept strings too
+    if (! validScenarios instanceof Array) {
+      validScenarios = [validScenarios];
+    }
+
+    // Normalize the input
+    for(var i=0, ii=validScenarios.length; i &#x3c; ii; i++) {
+      validScenarios[i] = validScenarios[i].toLowerCase();
+    }
+
+    // Scenario might be undefined here, but don&#x27;t hide the error as
+    // we should always validate with a scenario in mind lest something
+    // unexpected happen.
+    shouldValidate = validScenarios.indexOf(scenario.toLowerCase()) &#x3e;= 0;
+  }
+
+  if (shouldValidate) {
+    return baseValidator(name, val, params, rule, locale);
+  }
+  else {
+    return null;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.validators.length" id="apidoc.element.model.validators.length">
+        function <span class="apidocSignatureSpan">model.validators.</span>length
+        <span class="apidocSignatureSpan">(name, val, params, rule, locale)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">length = function (name, val, params, rule, locale) {
+  var validScenarios = rule.opts &#x26;&#x26; rule.opts.on
+    , scenario = rule.scenario
+    , shouldValidate = false;
+
+  // By default, we should validate on all scenarios
+  if (!validScenarios) {
+    shouldValidate = true;
+  }
+
+  // If the user specified scenarios
+  if (!shouldValidate) {
+    // Accept strings too
+    if (! validScenarios instanceof Array) {
+      validScenarios = [validScenarios];
+    }
+
+    // Normalize the input
+    for(var i=0, ii=validScenarios.length; i &#x3c; ii; i++) {
+      validScenarios[i] = validScenarios[i].toLowerCase();
+    }
+
+    // Scenario might be undefined here, but don&#x27;t hide the error as
+    // we should always validate with a scenario in mind lest something
+    // unexpected happen.
+    shouldValidate = validScenarios.indexOf(scenario.toLowerCase()) &#x3e;= 0;
+  }
+
+  if (shouldValidate) {
+    return baseValidator(name, val, params, rule, locale);
+  }
+  else {
+    return null;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.validators.present" id="apidoc.element.model.validators.present">
+        function <span class="apidocSignatureSpan">model.validators.</span>present
+        <span class="apidocSignatureSpan">(name, val, params, rule, locale)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">present = function (name, val, params, rule, locale) {
+  var validScenarios = rule.opts &#x26;&#x26; rule.opts.on
+    , scenario = rule.scenario
+    , shouldValidate = false;
+
+  // By default, we should validate on all scenarios
+  if (!validScenarios) {
+    shouldValidate = true;
+  }
+
+  // If the user specified scenarios
+  if (!shouldValidate) {
+    // Accept strings too
+    if (! validScenarios instanceof Array) {
+      validScenarios = [validScenarios];
+    }
+
+    // Normalize the input
+    for(var i=0, ii=validScenarios.length; i &#x3c; ii; i++) {
+      validScenarios[i] = validScenarios[i].toLowerCase();
+    }
+
+    // Scenario might be undefined here, but don&#x27;t hide the error as
+    // we should always validate with a scenario in mind lest something
+    // unexpected happen.
+    shouldValidate = validScenarios.indexOf(scenario.toLowerCase()) &#x3e;= 0;
+  }
+
+  if (shouldValidate) {
+    return baseValidator(name, val, params, rule, locale);
+  }
+  else {
+    return null;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.model.validators.withFunction" id="apidoc.element.model.validators.withFunction">
+        function <span class="apidocSignatureSpan">model.validators.</span>withFunction
+        <span class="apidocSignatureSpan">(name, val, params, rule, locale)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">withFunction = function (name, val, params, rule, locale) {
+  var validScenarios = rule.opts &#x26;&#x26; rule.opts.on
+    , scenario = rule.scenario
+    , shouldValidate = false;
+
+  // By default, we should validate on all scenarios
+  if (!validScenarios) {
+    shouldValidate = true;
+  }
+
+  // If the user specified scenarios
+  if (!shouldValidate) {
+    // Accept strings too
+    if (! validScenarios instanceof Array) {
+      validScenarios = [validScenarios];
+    }
+
+    // Normalize the input
+    for(var i=0, ii=validScenarios.length; i &#x3c; ii; i++) {
+      validScenarios[i] = validScenarios[i].toLowerCase();
+    }
+
+    // Scenario might be undefined here, but don&#x27;t hide the error as
+    // we should always validate with a scenario in mind lest something
+    // unexpected happen.
+    shouldValidate = validScenarios.indexOf(scenario.toLowerCase()) &#x3e;= 0;
+  }
+
+  if (shouldValidate) {
+    return baseValidator(name, val, params, rule, locale);
+  }
+  else {
+    return null;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
